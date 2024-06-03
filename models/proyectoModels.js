@@ -12,7 +12,7 @@ const proyectoSchema = new mongoose.Schema({
   etapaProyecto: { type: mongoose.Schema.Types.ObjectId, ref: 'Etapa' },
   fechaCreacion: { type: Date, default: Date.now },
   fechaActualizacion: { type: Date, default: Date.now }
-});
+}, { collection: 'proyectos' });
 
 const Proyecto = mongoose.model('Proyecto', proyectoSchema);
 

@@ -2,6 +2,7 @@ const Proyecto = require('../models/proyectoModels');
 
 class ProyectoControllers {
   async getAll(req, res) {
+    console.log('Peticion a getProyectos.....')
     try {
       const proyectos = await Proyecto.find();
       console.log('Todos los proyectos fueron obtenidos correctamente.');

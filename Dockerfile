@@ -16,4 +16,5 @@ ENV NODE_ENV=docker
 
 # Expose port and run the application
 EXPOSE 4200
+
 CMD ["node", "app.js"]
