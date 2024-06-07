@@ -2,27 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Clonar el Repositorio') {
+        stage('Clonar el Repositorio'){
             steps {
                 git branch: 'main', url: 'https://github.com/jorearmando15/MICRO-SERVICIO-IUDIGITAL-API.git'
             }
         }
-        stage('Construir imagen de Docker') {
+        stage('Construir imagen de Docker'){
             steps {
                 script {
                     withCredentials([
                         string(credentialsId: 'MONGODB_URI_LOCAL', variable: 'MONGODB_URI_LOCAL')
                     ]) {
-                        docker.build('proyecto-micro-iudigital:v1', "--build-arg MONGODB_URI_LOCAL=${MONGODB_URI_LOCAL} .")
+                        docker.build('proyecto-micro-iudigital:v1', '--build-arg MONGODB_URI_LOCAl=${MONGODB_URI_LOCAl} .')
                     }
                 }
             }
         }
-        stage('Desplegar contenedores Docker') {
+        stage('Desplegar contenedores Docker'){
             steps {
                 script {
                     withCredentials([
-                        string(credentialsId: 'MONGODB_URI_LOCAL', variable: 'MONGODB_URI_LOCAL')
+                            string(credentialsId: 'MONGODB_URI_LOCAl', variable: 'MONGODB_URI_LOCAl')
                     ]) {
                         sh 'docker-compose up -d'
                     }
