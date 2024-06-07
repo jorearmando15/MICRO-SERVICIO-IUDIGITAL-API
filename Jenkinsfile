@@ -1,36 +1,44 @@
 pipeline {
+    agent any
 
-    stages{
-        stage('Clonacion de repositorio'){
-            steps{
-                //clonar repo
+    stages {
+        stage('Clonar el Repositorio'){
+            steps {
+                git branch: 'main', url: 'https://github.com/jorearmando15/MICRO-SERVICIO-IUDIGITAL-API.git'
             }
         }
-    }
-
-    //opcional
-   stages{
-        stage('Construccion de imagen de docker'){
-            steps{
-                    // comando docker para un build
+        stage('Construir imagen de Docker'){
+            steps {
+                script {
+                    withCredentials([
+                        string(credentialsId: 'MONGODB_URI_LOCAl', variable: 'MONGODB_URI_LOCAl')
+                    ]) {
+                        docker.build('proyecto-micro-iudigital:v1', '--build-argMONGODB_URI_LOCAl=${MONGODB_URI_LOCAl} .')
+                    }
+                }
             }
         }
-    }
-
-   stages{
-        stage('Despliegue imagen de docker'){
-            steps{
-                script{
-                    //docker compose up -d
+        stage('Desplegar contenedores Docker'){
+            steps {
+                script {
+                    withCredentials([
+                            string(credentialsId: 'MONGODB_URI_LOCAl', variable: 'MONGODB_URI_LOCAl')
+                    ]) {
+                        sh 'docker-compose up -d'
+                    }
                 }
             }
         }
     }
 
-    post{
-        always{
-            //envie un email de configuracion
+    post {
+        always {
+            emailext (
+                subject: "Status del build: ${currentBuild.currentResult}",
+                body: "Se ha completado el build. Puede detallar en: ${env.BUILD_URL}",
+                to: "indira.hamdam@est.iudigital.edu.co",
+                from: "jenkins@iudigital.edu.co"
+            )
         }
     }
-
 }
