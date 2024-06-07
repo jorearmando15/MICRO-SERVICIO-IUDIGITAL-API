@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clonar el Repositorio'){
             steps {
-                git branch: 'main', url: 'https://github.com/jorearmando15/MICRO-SERVICIO-IUDIGITAL-API.git'
+                git branch: 'main', url: 'https://github.com/julioiud/micro-2024ii.git'
             }
         }
         stage('Construir imagen de Docker'){
@@ -13,7 +13,7 @@ pipeline {
                     withCredentials([
                         string(credentialsId: 'MONGODB_URI_LOCAL', variable: 'MONGODB_URI_LOCAL')
                     ]) {
-                        docker.build('proyecto-micro-iudigital:v1', '--build-arg MONGODB_URI_LOCAl=${MONGODB_URI_LOCAl} .')
+                        docker.build('proyectos-micro:v1', '--build-arg MONGODB_URI_LOCAL=mongodb://localhost:27017/iudigital .')
                     }
                 }
             }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([
-                            string(credentialsId: 'MONGODB_URI_LOCAl', variable: 'MONGODB_URI_LOCAl')
+                            string(credentialsId: 'MONGODB_URI_LOCAL', variable: 'MONGODB_URI_LOCAL')
                     ]) {
                         sh 'docker-compose up -d'
                     }
