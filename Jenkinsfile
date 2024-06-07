@@ -11,9 +11,9 @@ pipeline {
             steps {
                 script {
                     withCredentials([
-                        string(credentialsId: 'MONGODB_URI_LOCAl', variable: 'MONGODB_URI_LOCAl')
+                        string(credentialsId: 'MONGODB_URI_LOCAL', variable: 'MONGODB_URI_LOCAL')
                     ]) {
-                        docker.build('proyecto-micro-iudigital:v1', '--build-argMONGODB_URI_LOCAl=${MONGODB_URI_LOCAl} .')
+                        docker.build('proyecto-micro-iudigital:v1', '--build-arg MONGODB_URI_LOCAl=${MONGODB_URI_LOCAl} .')
                     }
                 }
             }
