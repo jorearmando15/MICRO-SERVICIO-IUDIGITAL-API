@@ -12,44 +12,8 @@ services:
       - proyecto-iudigital-app
     environment:
       - NODE_ENV=docker
-      - MONGODB_URI_LOCAL=mongodb://localhost:27017/iudigital
-
-  proyecto-micro-iudigital-2:
-    container_name: proyecto-micro-iudigital-2
-    image: proyecto-micro-iudigital:v1
-    ports:
-      - "4200"
-    networks:
-      - proyecto-iudigital-app
-    environment:
-      - NODE_ENV=docker
-      - MONGODB_URI_LOCAL=mongodb://localhost:27017/iudigital
-
-
-  proyecto-micro-iudigital-3:
-    container_name: proyecto-micro-iudigital-3
-    image: proyecto-micro-iudigital:v1
-    ports:
-      - "4200"
-    networks:
-      - proyecto-iudigital-app
-    environment:
-      - NODE_ENV=docker
-      - MONGODB_URI_LOCAL=mongodb://localhost:27017/iudigital
-
-  proyecto-micro-iudigital-4:
-      container_name: proyecto-micro-iudigital-4
-      image: proyecto-micro-iudigital:v1
-      ports:
-        - "4200"
-      networks:
-        - proyecto-iudigital-app
-      environment:
-        - NODE_ENV=docker
-        - MONGODB_URI_LOCAL=mongodb://localhost:27017/iudigital
+      - MONGODB_URI_LOCAL=${MONGODB_URI_LOCAl}
       
-
-
   balanceador:
     container_name: balanceador
     image: balanceador:v1
