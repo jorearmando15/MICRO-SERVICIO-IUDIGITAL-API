@@ -12,7 +12,7 @@ services:
       - proyecto-iudigital-app
     environment:
       - NODE_ENV=docker
-      - MONGODB_URI_LOCAL=${MONGODB_URI_LOCAl}
+      - MONGODB_URI_LOCAL=mongodb://localhost:27017/iudigital
       
   balanceador:
     container_name: balanceador
