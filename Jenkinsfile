@@ -13,7 +13,7 @@ pipeline {
                     withCredentials([
                         string(credentialsId: 'MONGODB_URI_LOCAL', variable: 'MONGODB_URI_LOCAL')
                     ]) {
-                        docker.build('proyectos-micro:v1', '--build-arg MONGODB_URI_LOCAL=${MONGODB_URI_LOCAL} .')
+                        docker.build(' proyecto-micro-iudigital:v1', '--build-arg MONGODB_URI_LOCAL=${MONGODB_URI_LOCAL} .')
                     }
                 }
             }
