@@ -32,7 +32,7 @@ class ProyectoControllers {
   async create(req, res) {
     try {
       const proyecto = new Proyecto(req.body);
-      const newProyecto = await proyecto.save();
+      proyecto = await proyecto.save();
       console.log('Proyecto creado exitosamente.');
       res.status(201).json({ message: 'Proyecto creado exitosamente.'});
     } catch (error) {
