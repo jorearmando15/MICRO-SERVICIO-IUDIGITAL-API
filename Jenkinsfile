@@ -35,7 +35,7 @@ pipeline {
         always {
             emailext (
                 subject: "Status del build: ${currentBuild.currentResult}",
-                body: "Se ha completado el build. Puede detallar en: ${env.BUILD_URL}",
+                body: "Se ha completado el build. Puede ver los detalles en el siguiente enlace: http://localhost:8081/job/${JOB_NAME}/${BUILD_NUMBER}/",
                 to: "jorgerodriguezorozco15@gmail.com",
                 from: "jorge.rodriguezao@est.iudigital.edu.co"
             )
