@@ -1,13 +1,14 @@
 require('dotenv').config();
 
-const { MONGODB_URI_LOCAL, MONGODB_URI_DOCKER, PORT } = process.env;
+const { MONGODB_URI_LOCAL, PORT } = process.env;
 
 module.exports = {
   getMongoURI: function() {
-    if (process.env.NODE_ENV === 'docker') {
-      return MONGODB_URI_DOCKER;
-    }
-    return MONGODB_URI_LOCAL;
+    if (process.env.NODE_ENV === 'docker' && process.env.MONGODB_URI_DOCKER) {
+      return process.env.MONGODB_URI_DOCKER;
+    } else if (process.env.MONGODB_URI_LOCAL) {
+      return process.env.MONGODB_URI_LOCAL;
+    } 
   },
   PORT: PORT || 4200
   
