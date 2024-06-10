@@ -7,7 +7,7 @@ services:
     build:
       context: .
     ports:
-      - "4200:4200"
+      - "4200"
     networks:
       - proyecto-iudigital-app
     environment:
@@ -20,7 +20,7 @@ services:
     build:
       context: .
     ports:
-      - "4200:4200"
+      - "4200"
     networks:
       - proyecto-iudigital-app
     environment:
@@ -34,7 +34,7 @@ services:
     build:
       context: .
     ports:
-      - "4200:4200"
+      - "4200"
     networks:
       - proyecto-iudigital-app
     environment:
@@ -47,7 +47,7 @@ services:
     build:
       context: .
     ports:
-      - "4200:4200"
+      - "4200"
     networks:
       - proyecto-iudigital-app
     environment:
