@@ -9,7 +9,7 @@ services:
       args:
         MONGODB_URI_LOCAL: ${MONGODB_URI_LOCAL}
     ports:
-      - "4200:4200"
+      - "4200"
     networks:
       - proyecto-iudigital-app
     environment:
@@ -24,7 +24,7 @@ services:
       args:
         MONGODB_URI_LOCAL: ${MONGODB_URI_LOCAL}
     ports:
-      - "4200:4200"
+      - "4200"
     networks:
       - proyecto-iudigital-app
     environment:
@@ -39,7 +39,7 @@ services:
       args:
         MONGODB_URI_LOCAL: ${MONGODB_URI_LOCAL}
     ports:
-      - "4200:4200"
+      - "4200"
     networks:
       - proyecto-iudigital-app
     environment:
