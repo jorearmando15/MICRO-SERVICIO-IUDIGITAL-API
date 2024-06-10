@@ -4,7 +4,7 @@ const config = require('../config/config');
 const connectDB = async () => {
   try {
     const MONGODB_URI = config.getMongoURI();
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(MONGODB_URI_LOCAL);
     console.log('¡Conexión a MongoDB exitosa! 🚀');
   } catch (error) {
     console.error('¡Ups! Hubo un problema al conectar con MongoDB:', error.message);
